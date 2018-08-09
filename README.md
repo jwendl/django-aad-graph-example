@@ -44,3 +44,14 @@ python3 manage.py runserver
 ```
 
 Then navigate to http://localhost:8000/main/auth
+
+## Steps to use docker
+
+Run the command above to clone from git
+
+Run the following commands
+
+``` bash
+docker build -t graph/aad-example:v1
+docker run -p 8000:8000 graph/aad-example:v1
+```
