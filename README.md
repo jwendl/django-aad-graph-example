@@ -2,6 +2,20 @@
 
 This is an example built from scratch to use django and adal to authenticate into Graph API
 
+## How to configure Azure AD
+
+Create a new Application
+
+Take down the application id and create an application secret.
+
+Inside the Reply URLs
+
+![Reply URLs](docs/ReplyUrlToken.png)
+
+Inside the Required permissions
+
+![Graph Permission](docs/AadPermissions.png)
+
 ## How to run this sample
 
 Clone the repository
@@ -52,6 +66,6 @@ Run the command above to clone from git
 Run the following commands
 
 ``` bash
-docker build -t graph/aad-example:v1
+docker build -t graph/aad-example:v1 .
 docker run -p 8000:8000 graph/aad-example:v1
 ```
