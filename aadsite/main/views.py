@@ -7,6 +7,7 @@ import adal
 import config
 import requests
 import logging
+import json
 
 PORT = 8000
 AUTHORITY_URL = config.AUTHORITY_HOST_URL + '/' + config.TENANT
@@ -62,15 +63,10 @@ def graphcall(request):
                     'Content-Type': 'application/json',
                     'client-request-id': str(uuid.uuid4())}
     graph_data = requests.get(endpoint, headers=http_headers, stream=False).json()
-    output = '<table>'
-    output += '<tr><td>Key</td><td>Value</td></tr>'
-    for key, value in graph_data.items():
-        if (not isinstance(key, type(None)) and not isinstance(value, type(None))): 
-            if (isinstance(value, list)):
-                for item in value:
-                    output += '<tr><td>' + key + '</td><td>' + item + '</td></tr>'
-            else: 
-                output += '<tr><td>' + key + '</td><td>' + value + '</td></tr>'
+    output = json.dumps(graph_data)
 
-    output += "</table>"
+    endpoint = config.RESOURCE + '/' + config.API_VERSION + '/me/memberOf'
+    graph_data = requests.get(endpoint, headers=http_headers, stream=False).json()
+    output += json.dumps(graph_data)
+
     return HttpResponse(output)
