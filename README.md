@@ -24,24 +24,29 @@ Clone the repository
 git clone https://github.com/jwendl/django-aad-graph-example.git
 ```
 
-Edit config.py to have the right values
-
-``` python
-RESOURCE = "https://graph.microsoft.com"  # Add the resource you want the access token for
-TENANT = ""  # Enter tenant name, e.g. contoso.onmicrosoft.com
-AUTHORITY_HOST_URL = "https://login.microsoftonline.com"
-CLIENT_ID = ""  # copy the Application ID of your app from your Azure portal
-CLIENT_SECRET = ""  # copy the value of key you generated when setting up the application
-
-# These settings are for the Microsoft Graph API Call
-API_VERSION = 'v1.0'
-```
-
 Change into the aadsite app
 
 ``` bash
 cd aadsite
 ```
+
+Edit or create .env to have the right values
+
+``` bash
+RESOURCE="https://graph.microsoft.com"
+TENANT="microsoft.onmicrosoft.com"
+AUTHORITY_HOST_URL="https://login.microsoftonline.com"
+CLIENT_ID=""
+CLIENT_SECRET=""
+API_VERSION="v1.0"
+```
+
+> RESOURCE is the resource we are reaching - in this case Graph.
+> TENANT is the tenant domain we are connecting to.
+> AUTHORITY_HOST_URL is the authority that prooves this exists, usually login.microsoftonline.com.
+> CLIENT_ID is the client id from the azure ad portal.
+> CLIENT_SECRET is the key created from the azure ad portal.
+> API_VERSION is the version of Graph API we want to use.
 
 Fetch requirements
 
